@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Register</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+</head>
+<body>
+<a href = "home.html">
+    <img src="/assets/logo.png" draggable="false" alt="logo" width="250"/>
+</a>
+<div>
+    <nav>
+        <ul>
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+            <li>
+                <a href="add.html">Add</a>
+            </li>
+            <li>
+                <a href="search.html">Search</a>
+            </li>
+            <li>
+                <a href="register.html">Register Class</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div>
+    <form method="post" name="reg-form">
+        <label for="id-field">ID</label>
+        <input type="text" id="id-field" name="id"/>
+        <input type="submit" name="show-btn" value="show"/>
+    </form>
+    <br>
+    <div>
+        <form method="post" name="save">
+            <table>
+                <tr>
+                    <th>
+                        Course
+                    </th>
+                    <th>
+                        Select
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Course 1
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Course 2
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Course 3
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Course 4
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="save-btn" value="Save">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
