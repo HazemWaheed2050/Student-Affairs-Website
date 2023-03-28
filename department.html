@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
+</head>
+<body>
+
+<a href="home.html">
+    <img src="/assets/logo.png" draggable="false" alt="logo" width="250"/>
+</a>
+<div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a>
+            <li><a href="add.html">Add</a>
+            <li><a href="active.html">All Active Students</a>
+            <li><a href="search.html">Search</a>
+            <li><a href="register.html">Register Class</a>
+        </ul>
+    </nav>
+</div>
+
+<div>
+    <h3>Change department</h3>
+    <form method="post" name="dep-form">
+        <label for="id-field">ID</label>
+        <input type="text" id="id-field" name="id"/>
+        <input type="submit" name="show-btn" value="show"/>
+    </form>
+
+    <form method="post" name="change-department" id="change-department-form">
+        <p>Name: <span id="stud-name">      </span></p>
+        <p>ID: <span id="stud-id">          </span></p>
+        <p>Level: <span id="stud-level">    </span></p>
+
+
+        <!-- This field should only be shown when level > 2 -->
+        <label for="department-dropdown">Department</label>
+        <select name="department" id="department-dropdown">
+            <option value="it"> No Department
+            <option value="it"> IT
+            <option value="ai"> AI
+            <option value="cs"> CS
+            <option value="is"> IS
+            <option value="ds"> DS
+        </select>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</div>
+
+</body>
+</html>
