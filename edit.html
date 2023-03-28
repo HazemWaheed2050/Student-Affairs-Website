@@ -9,17 +9,17 @@
 
 <a href = "home.html">
   <img src="/assets/logo.png" draggable="false" alt="logo" width="250"/>
-</a>
-<div>
-  <nav>
-    <ul>
-      <li><a href="home.html">Home</a>
-      <li><a href="add.html">Add</a>
-      <li><a href="search.html">Search</a>
-      <li><a href="register.html">Register Class</a>
-    </ul>
-  </nav>
-</div>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a>
+                <li><a href="add.html">Add</a>
+                <li><a href="active.html">All Active Students</a>
+                <li><a href="search.html">Search</a>
+                <li><a href="register.html">Register Class</a>
+            </ul>
+        </nav>
+    </div>
 
 <div>
   <h3>Edit a student</h3>
@@ -45,14 +45,17 @@
     <input type="checkbox" id="active-checkbox" checked="checked" required><br>
 
     <label for="level-field">Level</label>
-    <input type="range" id="level-field" name="level" value="2" min="1" max="4" required>
-    <!-- This span should change its content to be equal the current level -->
-    <span></span>
+    <select name="level" id="level-field">
+      <option value="1"> 1
+      <option value="2"> 2
+      <option value="3"> 3
+      <option value="4"> 4
+    </select>
     <br>
 
     <!-- This field should only be shown when level > 2 -->
     <label for="department-dropdown">Department</label>
-    <select name="department" id="department-dropdown">
+    <select name="department" id="department-dropdown" disabled>
       <option value="it"> IT
       <option value="ai"> AI
       <option value="cs"> CS

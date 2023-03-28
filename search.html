@@ -3,149 +3,151 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Search</title>
     <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
 </head>
 
 <body>
-    <a href="home.html">
-        <img src="/assets/logo.png" draggable="false" alt="logo" width="250" />
-    </a>
-    <div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="home.html">Home</a>
-                </li>
-                <li>
-                    <a href="add.html">Add</a>
-                </li>
-                <li>
-                    <a href="search.html">Search</a>
-                </li>
-                <li>
-                    <a href="register.html">Register Class</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+<a href="home.html">
+    <img src="/assets/logo.png" draggable="false" alt="logo" width="250"/>
+</a>
+<div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a>
+            <li><a href="add.html">Add</a>
+            <li><a href="active.html">All Active Students</a>
+            <li><a href="search.html">Search</a>
+            <li><a href="register.html">Register Class</a>
+        </ul>
+    </nav>
+</div>
+<br>
+<form id="form">
+    <input type="search" name="q" placeholder="Search for a student...">
+    <input type="submit" value="search">
+    <a href="">Filter</a>
+    <select>
+        <option>ID ascending</option>
+        <option>ID descending</option>
+        <option>GPA ascending</option>
+        <option>GPA descending</option>
+    </select>
     <br>
-    <form id="form">
-        <input type="search" name="q" placeholder="Search for a student...">
-        <input type="submit" value="search">
-        <a href="">Filter</a>
-        <select>
-            <option>ID ascending</option>
-            <option>ID descending</option>
-            <option>GPA ascending</option>
-            <option>GPA descending</option>
-        </select>
-        <br>
-        <select>
-            <option>Choose Level</option>
-            <option>Level 1</option>
-            <option>Level 2</option>
-            <option>Level 3</option>
-            <option>Level 4</option>
-        </select>
-        <select>
-            <option>Choose Activity</option>
-            <option>Active</option>
-            <option>Inactive</option>
-        </select>
-        <span>GPA</span>
-        <label for="gpa-field">From</label>
-        <input type="number" id="gpa-field" min="0" max="4.0" step="0.01" value="0.0" name="gpa">
-        <label for="gpa-field">To</label>
-        <input type="number" id="gpa-field" min="0" max="4.0" step="0.01" value="4.0" name="gpa">
-    </form>
-    <br>
-    <table border = 1px>
-        <tr>
-            <th>#</th>
-            <th>
-                Name
-            </th>
-            <th>
-                ID
-            </th>
-            <th>
-                Level
-            </th>
-            <th>
-                Department
-            </th>
-            <th>
-                GPA
-            </th>
-            <th>
-                Active
-            </th>
-            <th>
-                Edit
-            </th>
-            <th>
-                Delete
-            </th>
-        </tr>
-        <tr> 
-            <td>
-                1
-            </td>
-            <td>
-                Bodagamal74
-            </td>
-            <td>
-                20210223
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                general
-            </td>
-            <td>
-                4
-            </td>
-            <td>
-                <input type="radio" checked>
-            </td>
-            <td>
-                <a href="edit.html">Edit</a>
-            </td>
-            <td>
-                <a href = "#">Delete</a>
-            </td>
-        </tr>
-        <tr> 
-            <td>
-                2
-            </td>
-            <td>
-                Beshoyhany
-            </td>
-            <td>
-                20210097
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                general
-            </td>
-            <td>
-                1
-            </td>
-            <td>
-                <input type="radio" disabled>
-            </td>
-            <td>
-                <a href="edit.html">Edit</a>
-            </td>
-            <td>
-                <a href = "#">Delete</a>
-            </td>
-        </tr>
-    </table>
+    <select>
+        <option>Choose Level</option>
+        <option>Level 1</option>
+        <option>Level 2</option>
+        <option>Level 3</option>
+        <option>Level 4</option>
+    </select>
+    <select>
+        <option>Choose Activity</option>
+        <option>Active</option>
+        <option>Inactive</option>
+    </select>
+    <span>GPA</span>
+    <label for="gpa-field-l">From</label>
+    <input type="number" id="gpa-field-l" min="0" max="4.0" step="0.01" value="0.0" name="gpa">
+    <label for="gpa-field-r">To</label>
+    <input type="number" id="gpa-field-r" min="0" max="4.0" step="0.01" value="4.0" name="gpa">
+</form>
+<br>
+<table border=1px>
+    <tr>
+        <th>#</th>
+        <th>
+            Name
+        </th>
+        <th>
+            ID
+        </th>
+        <th>
+            Level
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            GPA
+        </th>
+        <th>
+            Active
+        </th>
+        <th>
+            Edit
+        </th>
+        <th>
+            Change Department
+        </th>
+        <th>
+            Delete
+        </th>
+    </tr>
+    <tr>
+        <td>
+            1
+        </td>
+        <td>
+            Bodagamal74
+        </td>
+        <td>
+            20210223
+        </td>
+        <td>
+            2
+        </td>
+        <td>
+            general
+        </td>
+        <td>
+            4
+        </td>
+        <td>
+            <input type="checkbox" checked disabled>
+        </td>
+        <td>
+            <a href="edit.html">Edit</a>
+        </td>
+        <td>
+            <a href="department.html">Change Department</a>
+        </td>
+        <td>
+            <a href="#">Delete</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            2
+        </td>
+        <td>
+            Beshoyhany
+        </td>
+        <td>
+            20210097
+        </td>
+        <td>
+            2
+        </td>
+        <td>
+            general
+        </td>
+        <td>
+            1
+        </td>
+        <td>
+            <input type="checkbox" disabled>
+        </td>
+        <td>
+            <a href="edit.html">Edit</a>
+        </td>
+        <td>
+            <a href="department.html">Change Department</a>
+        </td>
+        <td>
+            <a href="#">Delete</a>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
