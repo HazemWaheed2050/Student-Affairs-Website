@@ -4,22 +4,19 @@
   <meta charset="UTF-8">
   <title>Edit Student</title>
   <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
-
-<a href = "home.html">
-  <img src="assets/logo.png" draggable="false" alt="logo" width="250"/>
-    <div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a>
-                <li><a href="add.html">Add</a>
-                <li><a href="active.html">All Active Students</a>
-                <li><a href="search.html">Search</a>
-                <li><a href="register.html">Register Class</a>
-            </ul>
-        </nav>
-    </div>
+<div class="navbar">
+  <nav>
+    <a href="home.html" class="navbar-logo"></a>
+    <a href="home.html">Home</a>
+    <a href="add.html">Add Student</a>
+    <a href="active.html">Active Students</a>
+    <a href="search.html">Search</a>
+  </nav>
+</div>
 
 <div>
   <h3>Edit a student</h3>
@@ -41,16 +38,20 @@
     <input type="radio" id="female-radio" name="gender" value="Female"><label for="female-radio">Female</label>
     <br>
 
-    <label for="active-checkbox">Is Active Student?</label>
-    <input type="checkbox" id="active-checkbox" checked="checked" required><br>
+    <label for="student-status-dropdown">Student Status</label>
+    <select name="level" id="student-status-dropdown">
+      <option value="1"> Active
+      <option value="2"> Inactive
+    </select><br>
 
-    <label for="level-field">Level</label>
-    <select name="level" id="level-field">
+    <label for="level-dropdown">Level</label>
+    <select name="level" id="level-dropdown">
       <option value="1"> 1
       <option value="2"> 2
       <option value="3"> 3
       <option value="4"> 4
     </select>
+    <br>
     <br>
 
     <!-- This field should only be shown when level > 2 -->

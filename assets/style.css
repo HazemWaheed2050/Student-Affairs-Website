@@ -1,0 +1,74 @@
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==================== Navbar styles ==================== */
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #3F72AF;
+}
+
+.navbar nav {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.navbar > a {
+    display: block;
+}
+
+.navbar .navbar-logo {
+    content: url("/assets/logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+}
+
+.navbar nav {
+    padding: 0;
+    margin: 0;
+
+    height: 10vh;
+    line-height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.navbar nav a:not(.navbar-logo) {
+    height: 100%;
+    display: block;
+
+    margin: 0;
+    padding: 0 12pt;
+    box-sizing: border-box;
+
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: Arial, cursive;
+    white-space: nowrap;
+}
+
+.navbar nav a:visited, .navbar li a {
+    color: #fff;
+}
+
+.navbar nav a:hover:not(.navbar-logo) {
+    background-color: #112D4E;
+}
+
+/* ========================================= */
+/* Some bullshit */
+
+table{
+    border:1px solid black;
+}

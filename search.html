@@ -5,21 +5,18 @@
     <meta charset="UTF-8">
     <title>Search</title>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/style.css">
+
 </head>
 
 <body>
-<a href="home.html">
-    <img src="assets/logo.png" draggable="false" alt="logo" width="250"/>
-</a>
-<div>
+<div class="navbar">
     <nav>
-        <ul>
-            <li><a href="home.html">Home</a>
-            <li><a href="add.html">Add</a>
-            <li><a href="active.html">All Active Students</a>
-            <li><a href="search.html">Search</a>
-            <li><a href="register.html">Register Class</a>
-        </ul>
+        <a href="home.html" class="navbar-logo"></a>
+        <a href="home.html">Home</a>
+        <a href="add.html">Add Student</a>
+        <a href="active.html">Active Students</a>
+        <a href="search.html">Search</a>
     </nav>
 </div>
 <br>
@@ -42,7 +39,7 @@
         <option>Level 4</option>
     </select>
     <select>
-        <option>Choose Activity</option>
+        <option>Choose Status</option>
         <option>Active</option>
         <option>Inactive</option>
     </select>
@@ -53,7 +50,7 @@
     <input type="number" id="gpa-field-r" min="0" max="4.0" step="0.01" value="4.0" name="gpa">
 </form>
 <br>
-<table border=1px>
+<table>
     <tr>
         <th>#</th>
         <th>
