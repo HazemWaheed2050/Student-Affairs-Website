@@ -1,74 +1,93 @@
+/* ==================== Globals ==================== */
+
 body {
     width: 100%;
     padding: 0;
     margin: 0;
+
+    font-family: Arial, cursive;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
 }
 
 /* ==================== Navbar styles ==================== */
-
 .navbar {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #3F72AF;
-}
-
-.navbar nav {
     padding: 0;
     margin: 0;
+    position: fixed;
+    height: 10vh;
+    top: 0;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    background-color: #3F72AF;
+    width: 100%;
+    z-index: 99;
+    overflow: hidden;
+    line-height: 10vh;
 }
 
-.navbar > a {
-    display: block;
+.navbar a:not(.navbar-logo) {
+    height: 100%;
+    padding: 0 12pt;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16pt;
+    font-weight: bold;
+    white-space: nowrap;
 }
+
 
 .navbar .navbar-logo {
-    content: url("/assets/logo.png");
+    content: url("./logo.png");
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
 }
 
-.navbar nav {
-    padding: 0;
-    margin: 0;
-
-    height: 10vh;
-    line-height: 10vh;
-
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+.navbar a:visited,
+.navbar a {
+    color: #DBE2EF;
 }
 
-.navbar nav a:not(.navbar-logo) {
-    height: 100%;
-    display: block;
-
-    margin: 0;
-    padding: 0 12pt;
-    box-sizing: border-box;
-
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: Arial, cursive;
-    white-space: nowrap;
-}
-
-.navbar nav a:visited, .navbar li a {
-    color: #fff;
-}
-
-.navbar nav a:hover:not(.navbar-logo) {
+.navbar a:hover:not(.navbar-logo),
+.navbar a.cur-page {
     background-color: #112D4E;
 }
 
-/* ========================================= */
-/* Some bullshit */
+/* ==================== Bull shit ==================== */
 
-table{
-    border:1px solid black;
+table {
+    border: 1px solid black;
 }
+
+/* ==================== Containers ==================== */
+
+body .container {
+    margin: 0 auto;
+    width: 70vw;
+    padding: 0 2.5vw;
+}
+
+body > *:not(nav.navbar) {
+    margin-top: 10vh;
+}
+
+body > *:not(nav.navbar) ~ * {
+    margin-top: 0;
+}
+
+/*
+!* ==================== Forms ==================== *!
+#search-form {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+#search-form .filters{
+    margin-top: 10px;
+}*/
