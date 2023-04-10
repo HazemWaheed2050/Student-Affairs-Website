@@ -1,9 +1,9 @@
 /* ==================== Globals ==================== */
 
 body {
-    width: 100%;
     padding: 0;
     margin: 0;
+    width: 100%;
 
     font-family: Arial, cursive;
 }
@@ -13,7 +13,7 @@ body {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 /* ==================== Navbar styles ==================== */
@@ -52,6 +52,7 @@ body {
 .navbar a:visited,
 .navbar a {
     color: #DBE2EF;
+    user-select: none;
 }
 
 .navbar a:hover:not(.navbar-logo),
@@ -60,9 +61,24 @@ body {
 }
 
 /* ==================== Bull shit ==================== */
+table, th, tr, td {
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    background-color: #3F72AF;
+    color: white;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14pt;
+}
 
 table {
-    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 /* ==================== Containers ==================== */
@@ -74,20 +90,102 @@ body .container {
 }
 
 body > *:not(nav.navbar) {
-    margin-top: 10vh;
+    margin-top: calc(20px + 10vh);
 }
 
 body > *:not(nav.navbar) ~ * {
     margin-top: 0;
 }
 
-/*
-!* ==================== Forms ==================== *!
-#search-form {
-    border: 2px solid black;
-    padding: 10px;
+/* ==================== Forms ==================== */
+input,
+input:focus,
+input:active,
+select,
+select:focus,
+select:active {
+    outline-width: 0;
 }
 
-#search-form .filters{
-    margin-top: 10px;
-}*/
+input,
+select {
+    padding: 10px;
+    margin: 5px 0;
+
+    border: 2px solid #3F72AF;
+    border-radius: 5px;
+
+    transition: 0.2s;
+
+    font-size: 12pt;
+}
+
+input:focus:not([type="radio"], [type="submit"], [type="reset"], [type="button"]), input:active, select:focus, select:active {
+    box-shadow: 0 0 7px #112D4E
+}
+
+input:focus:not([type="radio"], [type="submit"], [type="reset"], [type="button"]), select:focus {
+    border-bottom: 2px solid #3F72AF;
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+    transition: 0.1s;
+}
+
+#search-form {
+    margin-bottom: 20px;
+    padding: 10px 0 20px 0;
+    border-bottom: 1px solid black;
+}
+
+#search-form div:first-child {
+    display: flex;
+}
+
+#search-form div:first-child .search-field {
+    flex-grow: 1;
+}
+
+#search-form div:first-child > * {
+    margin: 0 5px;
+}
+
+#filters {
+    display: flex;
+}
+
+#filters span {
+    flex-grow: 1;
+    margin: 15px 10px 0 10px;
+}
+
+#filters span input,
+#filters span select {
+    width: 100%;
+}
+
+.gpa-selector {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.gpa-selector input {
+    flex-grow: 1;
+}
+
+#filters span .gpa-selector *:not(:empty) {
+    margin: 0 5pt 0 0;
+}
+
+#filters span .gpa-selector *:not(:empty, :first-child) {
+    margin: 0 5pt 0 5pt;
+}
+
+.active-btn {
+    border-color: #0e2ea9;
+}

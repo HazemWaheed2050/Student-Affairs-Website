@@ -12,45 +12,58 @@
 
 <body>
 <nav class="navbar">
-        <a href="home.html" class="navbar-logo"></a>
-        <a href="home.html">Home</a>
-        <a href="add.html">Add Student</a>
-        <a href="active.html">Active Students</a>
-        <a href="search.html" class="cur-page">Search</a>
-    </nav>
+    <a href="home.html" class="navbar-logo"></a>
+    <a href="home.html">Home</a>
+    <a href="add.html">Add Student</a>
+    <a href="active.html">Active Students</a>
+    <a href="search.html" class="cur-page">Search Students</a>
+</nav>
 <div class="container">
     <form id="search-form">
-        <input type="text" name="stud-name" placeholder="Student Name">
-        <input type="text" name="stud-id" placeholder="Student ID">
-        <input type="submit" value="Search">
-        <a href="#" id="show-filters">Filter</a>
-        <div id="filters" class="hide">
+        <div>
+            <input class="search-field" name="stud-name" placeholder="Student Name" type="text">
+            <input class="search-field" name="stud-id" placeholder="Student ID" type="number">
             <select name="sort-by">
                 <option>ID ascending</option>
                 <option>ID descending</option>
                 <option>GPA ascending</option>
                 <option>GPA descending</option>
             </select>
-            <select name="stud-level">
-                <option>Choose Level</option>
+            <input type="submit" value="Search">
+            <input type="reset" value="Clear">
+            <input id="show-filters" type="button" value="Filters">
+        </div>
+        <div class="hide" id="filters">
+            <span>
+                <b>Level</b>
+                <select name="stud-level">
+                <option>Any</option>
                 <option>Level 1</option>
                 <option>Level 2</option>
                 <option>Level 3</option>
                 <option>Level 4</option>
             </select>
-            <select name="stud-status">
-                <option>Choose Status</option>
-                <option>Active</option>
-                <option>Inactive</option>
-            </select>
-            <span>GPA</span>
-            <label for="l-gpa">From</label>
-            <input type="number" id="l-gpa" min="0" max="4.0" step="0.01" value="0.0" name="gpa">
-            <label for="r-gpa">To</label>
-            <input type="number" id="r-gpa" min="0" max="4.0" step="0.01" value="4.0" name="gpa">
+            </span>
+            <span>
+            <b>Status</b>
+
+                <select name="stud-status">
+                    <option>Any</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </span>
+            <span>
+                <b>GPA</b>
+            <div class="gpa-selector">
+                <label for="l-gpa">From</label>
+                <input id="l-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="0.0">
+                <label for="r-gpa">To</label>
+                <input id="r-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="4.0">
+            </div>
+            </span>
         </div>
-    </form>
-    <table>
+    </form>    <table>
         <tr>
             <th>#</th>
             <th>
@@ -150,7 +163,9 @@
 
 <script>
     let e = document.querySelector("#show-filters");
-    e.addEventListener("click", toggle_filters);
-</script>
-</body>
+    e.addEventListener("click", () => {
+        toggle_filters();
+        e.classList.toggle("active-btn");
+    });
+</script></body>
 </html>
