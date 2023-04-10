@@ -6,145 +6,166 @@
     <title>Search</title>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
 
 </head>
 
 <body>
-<div class="navbar">
-    <nav>
-        <a href="home.html" class="navbar-logo"></a>
-        <a href="home.html">Home</a>
-        <a href="add.html">Add Student</a>
-        <a href="active.html">Active Students</a>
-        <a href="search.html">Search</a>
-    </nav>
+<nav class="navbar">
+    <a href="home.html" class="navbar-logo"></a>
+    <a href="home.html">Home</a>
+    <a href="add.html">Add Student</a>
+    <a href="active.html">Active Students</a>
+    <a href="search.html" class="cur-page">Search Students</a>
+</nav>
+<div class="container">
+    <form id="search-form">
+        <div>
+            <input class="search-field" name="stud-name" placeholder="Student Name" type="text">
+            <input class="search-field" name="stud-id" placeholder="Student ID" type="number">
+            <select name="sort-by">
+                <option>ID ascending</option>
+                <option>ID descending</option>
+                <option>GPA ascending</option>
+                <option>GPA descending</option>
+            </select>
+            <input type="submit" value="Search">
+            <input type="reset" value="Clear">
+            <input id="show-filters" type="button" value="Filters">
+        </div>
+        <div class="hide" id="filters">
+            <span>
+                <b>Level</b>
+                <select name="stud-level">
+                <option>Any</option>
+                <option>Level 1</option>
+                <option>Level 2</option>
+                <option>Level 3</option>
+                <option>Level 4</option>
+            </select>
+            </span>
+            <span>
+            <b>Status</b>
+
+                <select name="stud-status">
+                    <option>Any</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </span>
+            <span>
+                <b>GPA</b>
+            <div class="gpa-selector">
+                <label for="l-gpa">From</label>
+                <input id="l-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="0.0">
+                <label for="r-gpa">To</label>
+                <input id="r-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="4.0">
+            </div>
+            </span>
+        </div>
+    </form>    <table>
+        <tr>
+            <th>#</th>
+            <th>
+                Name
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Level
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                GPA
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Change Department
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                Bodagamal74
+            </td>
+            <td>
+                20210223
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                general
+            </td>
+            <td>
+                4
+            </td>
+            <td>
+                <input type="checkbox" checked disabled>
+            </td>
+            <td>
+                <a href="edit.html">Edit</a>
+            </td>
+            <td>
+                <a href="department.html">Change Department</a>
+            </td>
+            <td>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2
+            </td>
+            <td>
+                Beshoyhany
+            </td>
+            <td>
+                20210097
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                general
+            </td>
+            <td>
+                1
+            </td>
+            <td>
+                <input type="checkbox" disabled>
+            </td>
+            <td>
+                <a href="edit.html">Edit</a>
+            </td>
+            <td>
+                <a href="department.html">Change Department</a>
+            </td>
+            <td>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+    </table>
 </div>
-<br>
-<form id="form">
-    <input type="search" name="q" placeholder="Search for a student...">
-    <input type="submit" value="search">
-    <a href="">Filter</a>
-    <select>
-        <option>ID ascending</option>
-        <option>ID descending</option>
-        <option>GPA ascending</option>
-        <option>GPA descending</option>
-    </select>
-    <br>
-    <select>
-        <option>Choose Level</option>
-        <option>Level 1</option>
-        <option>Level 2</option>
-        <option>Level 3</option>
-        <option>Level 4</option>
-    </select>
-    <select>
-        <option>Choose Status</option>
-        <option>Active</option>
-        <option>Inactive</option>
-    </select>
-    <span>GPA</span>
-    <label for="gpa-field-l">From</label>
-    <input type="number" id="gpa-field-l" min="0" max="4.0" step="0.01" value="0.0" name="gpa">
-    <label for="gpa-field-r">To</label>
-    <input type="number" id="gpa-field-r" min="0" max="4.0" step="0.01" value="4.0" name="gpa">
-</form>
-<br>
-<table>
-    <tr>
-        <th>#</th>
-        <th>
-            Name
-        </th>
-        <th>
-            ID
-        </th>
-        <th>
-            Level
-        </th>
-        <th>
-            Department
-        </th>
-        <th>
-            GPA
-        </th>
-        <th>
-            Active
-        </th>
-        <th>
-            Edit
-        </th>
-        <th>
-            Change Department
-        </th>
-        <th>
-            Delete
-        </th>
-    </tr>
-    <tr>
-        <td>
-            1
-        </td>
-        <td>
-            Bodagamal74
-        </td>
-        <td>
-            20210223
-        </td>
-        <td>
-            2
-        </td>
-        <td>
-            general
-        </td>
-        <td>
-            4
-        </td>
-        <td>
-            <input type="checkbox" checked disabled>
-        </td>
-        <td>
-            <a href="edit.html">Edit</a>
-        </td>
-        <td>
-            <a href="department.html">Change Department</a>
-        </td>
-        <td>
-            <a href="#">Delete</a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            2
-        </td>
-        <td>
-            Beshoyhany
-        </td>
-        <td>
-            20210097
-        </td>
-        <td>
-            2
-        </td>
-        <td>
-            general
-        </td>
-        <td>
-            1
-        </td>
-        <td>
-            <input type="checkbox" disabled>
-        </td>
-        <td>
-            <a href="edit.html">Edit</a>
-        </td>
-        <td>
-            <a href="department.html">Change Department</a>
-        </td>
-        <td>
-            <a href="#">Delete</a>
-        </td>
-    </tr>
-</table>
-</body>
+
+<script>
+    let e = document.querySelector("#show-filters");
+    e.addEventListener("click", () => {
+        toggle_filters();
+        e.classList.toggle("active-btn");
+    });
+</script></body>
 </html>

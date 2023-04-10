@@ -5,20 +5,19 @@
   <title>Edit Student</title>
   <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js"></script>
 
 </head>
 <body>
-<div class="navbar">
-  <nav>
+  <nav class="navbar">
     <a href="home.html" class="navbar-logo"></a>
     <a href="home.html">Home</a>
     <a href="add.html">Add Student</a>
     <a href="active.html">Active Students</a>
-    <a href="search.html">Search</a>
+    <a href="search.html">Search Students</a>
   </nav>
-</div>
 
-<div>
+<div class="container">
   <h3>Edit a student</h3>
   <form method="post" name="edit-student" id="edit-student-form">
     <label for="name-field">Name</label>
@@ -51,7 +50,6 @@
       <option value="3"> 3
       <option value="4"> 4
     </select>
-    <br>
     <br>
 
     <!-- This field should only be shown when level > 2 -->
