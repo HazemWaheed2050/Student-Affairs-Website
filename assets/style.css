@@ -65,9 +65,17 @@ table, th, tr, td {
     border-bottom: 1px solid #ddd;
 }
 
-th{
+th {
     background-color: #3F72AF;
     color: white;
+}
+
+tr {
+    background-color: #F9F7F7;
+}
+
+tr:nth-child(odd) {
+    background-color: #DBE2EF;
 }
 
 th, td {
@@ -140,25 +148,18 @@ input[type="button"]:active {
     border-bottom: 1px solid black;
 }
 
-#search-form div:first-child {
+#search-form > div {
     display: flex;
+    margin-top:10px;
 }
 
-#search-form div:first-child .search-field {
+#search-form > div * {
     flex-grow: 1;
+    margin-right: 10px;
 }
 
-#search-form div:first-child > * {
-    margin: 0 5px;
-}
-
-#filters {
-    display: flex;
-}
-
-#filters span {
-    flex-grow: 1;
-    margin: 15px 10px 0 10px;
+#search-form div *:last-child{
+    margin-right: 0;
 }
 
 #filters span input,

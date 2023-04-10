@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Search</title>
+    <title>Search Students</title>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
@@ -46,7 +46,6 @@
             </span>
             <span>
             <b>Status</b>
-
                 <select name="stud-status">
                     <option>Any</option>
                     <option>Active</option>
@@ -57,13 +56,14 @@
                 <b>GPA</b>
             <div class="gpa-selector">
                 <label for="l-gpa">From</label>
-                <input id="l-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="0.0">
+                <input id="l-gpa" max="4.0" min="0" name="l-gpa" step="0.01" type="number" value="0.0">
                 <label for="r-gpa">To</label>
-                <input id="r-gpa" max="4.0" min="0" name="gpa" step="0.01" type="number" value="4.0">
+                <input id="r-gpa" max="4.0" min="0" name="r-gpa" step="0.01" type="number" value="4.0">
             </div>
             </span>
         </div>
-    </form>    <table>
+    </form>
+    <table>
         <tr>
             <th>#</th>
             <th>
@@ -167,5 +167,6 @@
         toggle_filters();
         e.classList.toggle("active-btn");
     });
-</script></body>
+</script>
+</body>
 </html>
