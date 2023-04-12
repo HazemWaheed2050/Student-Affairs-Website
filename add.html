@@ -17,6 +17,11 @@
 </nav>
 
 <div class="container">
+    <div class="hide" id="message-modal-container">
+        <span id="message-modal-text">
+            Success!
+        </span>
+    </div>
     <form method="post" name="add-student" id="add-student-form" class="student-form">
         <h3>Add a new student</h3>
         <div class="double-field-container">
@@ -32,7 +37,7 @@
         <div class="double-field-container">
             <div>
                 <label for="email-field">Email</label>
-                <input type="email" id="email-field" name="email" placeholder="example@ex.com">
+                <input type="text" id="email-field" name="email" placeholder="example@ex.com">
             </div>
             <div>
                 <label for="phone-field">Phone number</label>
@@ -82,9 +87,8 @@
             </div>
 
             <div>
-                <!-- This field should only be shown when level > 2 -->
                 <label for="department-dropdown">Department</label>
-                <select name="department" id="department-dropdown">
+                <select name="department" id="department-dropdown" disabled>
                     <option value="it"> IT
                     <option value="ai"> AI
                     <option value="cs"> CS
@@ -100,6 +104,58 @@
         </div>
     </form>
 </div>
+<script>
+    const lvl_menu = document.querySelector("#level-dropdown");
+    const dep_menu = document.querySelector("#department-dropdown");
+    lvl_menu.addEventListener("change", (event) => {
+        dep_menu.disabled = lvl_menu.selectedIndex < 2;
+    });
 
+    const form = document.querySelector("#add-student-form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        const obj = {};
+
+        for (const [key, value] of formData.entries()) {
+            obj[key] = value;
+        }
+
+        if (obj['level'] <= 2) {
+            obj['department'] = 'general';
+        }
+
+        const cont = document.querySelector("#message-modal-container");
+
+        // validation
+        if (!validateID(obj['id'])) {
+            cont.classList.remove("hide");
+            cont.classList.remove("success-msg");
+            cont.classList.add("error-msg");
+            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Student ID.";
+        } else if (!validateEmail(obj['email'])) {
+            cont.classList.remove("hide");
+            cont.classList.remove("success-msg");
+            cont.classList.add("error-msg");
+            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Email Address.";
+        } else if (!validatePhoneNumber(obj['phone'])) {
+            cont.classList.remove("hide");
+            cont.classList.remove("success-msg");
+            cont.classList.add("error-msg");
+            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Phone number.";
+        } else {
+            localStorage.setItem(obj['id'], JSON.stringify(obj));
+
+            cont.classList.remove("hide");
+            cont.classList.remove("error-msg");
+            cont.classList.add("success-msg");
+            cont.querySelector("#message-modal-text").innerHTML = "Student: " + obj['name'] + " added successfully!";
+            form.reset();
+        }
+
+    });
+</script>
 </body>
 </html>

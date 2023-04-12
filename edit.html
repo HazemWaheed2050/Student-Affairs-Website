@@ -17,7 +17,12 @@
 </nav>
 
 <div class="container">
-  <form method="post" name="add-student" id="add-student-form" class="student-form">
+  <div class="hide" id="message-modal-container">
+        <span id="message-modal-text">
+            Success!
+        </span>
+  </div>
+  <form method="post" name="add-student" id="edit-student-form" class="student-form">
     <h3>Edit student</h3>
     <div class="double-field-container">
       <div>
@@ -37,12 +42,6 @@
       <div>
         <label for="phone-field">Phone number</label>
         <input type="text" id="phone-field" name="phone" placeholder="xxxxxxxxxxx">
-      </div>
-    </div>
-    <div class="field-container">
-      <div>
-        <label for="dob-field">Birth date</label>
-        <input type="date" id="dob-field" name="dob" required>
       </div>
     </div>
     <div class="field-container">
@@ -105,6 +104,60 @@
     </div>
   </form>
 </div>
+
+
+<script>
+  const lvl_menu = document.querySelector("#level-dropdown");
+  const dep_menu = document.querySelector("#department-dropdown");
+  lvl_menu.addEventListener("change", (event) => {
+    dep_menu.disabled = lvl_menu.selectedIndex < 2;
+  });
+
+  const form = document.querySelector("#edit-student-form");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    const obj = {};
+
+    for (const [key, value] of formData.entries()) {
+      obj[key] = value;
+    }
+
+    if (obj['level'] <= 2) {
+      obj['department'] = 'general';
+    }
+
+    const cont = document.querySelector("#message-modal-container");
+
+    // validation
+    if (!validateID(obj['id'])) {
+      cont.classList.remove("hide");
+      cont.classList.remove("success-msg");
+      cont.classList.add("error-msg");
+      cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Student ID.";
+    } else if (!validateEmail(obj['email'])) {
+      cont.classList.remove("hide");
+      cont.classList.remove("success-msg");
+      cont.classList.add("error-msg");
+      cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Email Address.";
+    } else if (!validatePhoneNumber(obj['phone'])) {
+      cont.classList.remove("hide");
+      cont.classList.remove("success-msg");
+      cont.classList.add("error-msg");
+      cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Phone number.";
+    } else {
+      localStorage.setItem(obj['id'], JSON.stringify(obj));
+
+      cont.classList.remove("hide");
+      cont.classList.remove("error-msg");
+      cont.classList.add("success-msg");
+      cont.querySelector("#message-modal-text").innerHTML = "Edits Saved";
+    }
+
+  });
+</script>
 
 </body>
 </html>
