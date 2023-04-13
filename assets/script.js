@@ -145,7 +145,7 @@ function initEditStudent() {
     });
 }
 
-function initSearchStudent(){
+function initSearchStudent() {
     const parametersToShow = ['name', 'id', 'level', 'department', 'gpa', 'status'];
     let e = document.querySelector("#show-filters");
     e.addEventListener("click", () => {
@@ -188,6 +188,11 @@ function initSearchStudent(){
         anchor = document.createElement('a');
         anchor.href = 'department.html?id=' + student['id'];
         anchor.innerText = "Change Department";
+        if (student['level'] <= 2) {
+            anchor.style.pointerEvents = 'none';
+            anchor.style.cursor='default';
+            anchor.style.color='grey';
+        }
         cell.appendChild(anchor);
         row.appendChild(cell);
 
@@ -199,5 +204,36 @@ function initSearchStudent(){
         row.appendChild(cell);
 
         table.tBodies[0].appendChild(row);
+    }
+}
+
+function initChangeDepartment() {
+
+    const queryString = window.location.search;
+    const searchParams = new URLSearchParams(queryString);
+
+    const students = JSON.parse(localStorage.getItem('students'));
+    const stud = students[searchParams.get('id')];
+
+    document.getElementById('stud-name').innerHTML = stud['name'];
+    document.getElementById('stud-id').innerHTML = stud['id'];
+    document.getElementById('stud-level').innerHTML = stud['level'];
+    if (stud['level'] <= 2)
+        document.getElementById('department-dropdown').disabled = true;
+    else {
+        document.getElementById('department-dropdown').value = stud['department'];
+        const form = document.getElementById('change-department-form');
+
+        const cont = document.querySelector("#message-modal-container");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            stud['department'] = document.getElementById('department-dropdown').value;
+            students[stud['id']] = stud;
+            localStorage.setItem('students', JSON.stringify(students));
+            cont.classList.remove("hide");
+            cont.classList.remove("error-msg");
+            cont.classList.add("success-msg");
+            cont.querySelector("#message-modal-text").innerHTML = "Student " + obj['name'] + " added successfully!";
+        });
     }
 }
