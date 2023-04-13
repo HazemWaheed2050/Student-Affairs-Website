@@ -29,6 +29,7 @@ body {
     z-index: 99;
     overflow: hidden;
     line-height: 10vh;
+    justify-content: center;
 }
 
 .navbar a:not(.navbar-logo) {
@@ -53,6 +54,7 @@ body {
 .navbar a {
     color: #DBE2EF;
     user-select: none;
+    margin: 0 3vw;
 }
 
 .navbar a:hover:not(.navbar-logo),
@@ -195,7 +197,7 @@ input[type="button"]:active {
 form.student-form {
     display: flex;
     flex-direction: column;
-    padding: 0 15vw;
+    padding: 0 15vw 15vh 15vw;
 }
 
 form.student-form > div {
@@ -236,6 +238,24 @@ form.student-form .buttons {
 
 form.student-form .buttons input {
     width: 40%;
+}
+
+/* Messages */
+
+.success-msg {
+    background: #3F72AFBF;
+    color: white;
+    padding: 24pt;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.error-msg{
+    background: #FF4742BF;
+    color: white;
+    padding: 24pt;
+    border-radius: 10px;
+    margin: 20px;
 }
 
 /* Button */

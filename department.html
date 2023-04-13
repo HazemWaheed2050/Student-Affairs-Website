@@ -10,21 +10,14 @@
 </head>
 <body>
 <nav class="navbar">
-        <a href="home.html" class="navbar-logo"></a>
-        <a href="home.html">Home</a>
-        <a href="add.html">Add Student</a>
-        <a href="active.html">Active Students</a>
+    <a href="home.html">Home</a>
+    <a href="add.html">Add Student</a>
+    <a href="active.html">Active Students</a>
     <a href="search.html">Search Students</a>
-    </nav>
+</nav>
 
 <div class="container">
     <h3>Change department</h3>
-    <form method="post" name="dep-form">
-        <label for="id-field">ID</label>
-        <input type="text" id="id-field" name="id"/>
-        <input type="submit" name="show-btn" value="show"/>
-    </form>
-
     <form method="post" name="change-department" id="change-department-form">
         <p>Name: <span id="stud-name">      </span></p>
         <p>ID: <span id="stud-id">          </span></p>
@@ -34,7 +27,6 @@
         <!-- This field should only be shown when level > 2 -->
         <label for="department-dropdown">Department</label>
         <select name="department" id="department-dropdown">
-            <option value="it"> No Department
             <option value="it"> IT
             <option value="ai"> AI
             <option value="cs"> CS
