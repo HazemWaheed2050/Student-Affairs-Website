@@ -17,26 +17,38 @@
 </nav>
 
 <div class="container">
-    <h3>Change department</h3>
-    <form method="post" name="change-department" id="change-department-form">
+    <div class="hide" id="message-modal-container">
+        <span id="message-modal-text">
+            Success!
+        </span>
+    </div>
+    <form method="post" name="change-department" id="change-department-form" class="student-form">
+        <h2>Change department</h2>
         <p>Name: <span id="stud-name">      </span></p>
         <p>ID: <span id="stud-id">          </span></p>
         <p>Level: <span id="stud-level">    </span></p>
 
 
         <!-- This field should only be shown when level > 2 -->
-        <label for="department-dropdown">Department</label>
-        <select name="department" id="department-dropdown">
-            <option value="it"> IT
-            <option value="ai"> AI
-            <option value="cs"> CS
-            <option value="is"> IS
-            <option value="ds"> DS
-        </select>
+        <div class="field-container">
+            <div>
+                <label for="department-dropdown"><p>Department</p></label>
+                <select name="department" id="department-dropdown">
+                    <option value="it"> IT
+                    <option value="ai"> AI
+                    <option value="cs"> CS
+                    <option value="is"> IS
+                    <option value="ds"> DS
+                </select>
+            </div>
+        </div>
+
         <br>
-        <input type="submit" value="Save">
+        <div class="buttons">
+            <input type="submit" value="Save" class="button">
+        </div>
     </form>
 </div>
-
+<script>initChangeDepartment();</script>
 </body>
 </html>
