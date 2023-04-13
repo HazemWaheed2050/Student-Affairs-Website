@@ -9,7 +9,6 @@
 </head>
 <body>
 <nav class="navbar">
-    <a href="home.html" class="navbar-logo"></a>
     <a href="home.html">Home</a>
     <a href="add.html" class="cur-page">Add Student</a>
     <a href="active.html">Active Students</a>
@@ -62,8 +61,8 @@
             <div>
                 <label for="student-status-dropdown">Status</label>
                 <select name="status" id="student-status-dropdown">
-                    <option value="1"> Active
-                    <option value="2"> Inactive
+                    <option value="active"> Active
+                    <option value="inactive"> Inactive
                 </select>
             </div>
         </div>
@@ -105,57 +104,7 @@
     </form>
 </div>
 <script>
-    const lvl_menu = document.querySelector("#level-dropdown");
-    const dep_menu = document.querySelector("#department-dropdown");
-    lvl_menu.addEventListener("change", (event) => {
-        dep_menu.disabled = lvl_menu.selectedIndex < 2;
-    });
-
-    const form = document.querySelector("#add-student-form");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(event.target);
-
-        const obj = {};
-
-        for (const [key, value] of formData.entries()) {
-            obj[key] = value;
-        }
-
-        if (obj['level'] <= 2) {
-            obj['department'] = 'general';
-        }
-
-        const cont = document.querySelector("#message-modal-container");
-
-        // validation
-        if (!validateID(obj['id'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Student ID.";
-        } else if (!validateEmail(obj['email'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Email Address.";
-        } else if (!validatePhoneNumber(obj['phone'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Phone number.";
-        } else {
-            localStorage.setItem(obj['id'], JSON.stringify(obj));
-
-            cont.classList.remove("hide");
-            cont.classList.remove("error-msg");
-            cont.classList.add("success-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Student: " + obj['name'] + " added successfully!";
-            form.reset();
-        }
-
-    });
+    initAddStudent();
 </script>
 </body>
 </html>

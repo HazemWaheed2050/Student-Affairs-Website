@@ -12,7 +12,6 @@
 
 <body>
 <nav class="navbar">
-    <a href="home.html" class="navbar-logo"></a>
     <a href="home.html">Home</a>
     <a href="add.html">Add Student</a>
     <a href="active.html">Active Students</a>
@@ -63,7 +62,8 @@
             </span>
         </div>
     </form>
-    <table>
+    <table id="students-table">
+        <thead>
         <tr>
             <th>#</th>
             <th>
@@ -94,79 +94,15 @@
                 Delete
             </th>
         </tr>
-        <tr>
-            <td>
-                1
-            </td>
-            <td>
-                Bodagamal74
-            </td>
-            <td>
-                20210223
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                general
-            </td>
-            <td>
-                4
-            </td>
-            <td>
-                <input type="checkbox" checked disabled>
-            </td>
-            <td>
-                <a href="edit.html">Edit</a>
-            </td>
-            <td>
-                <a href="department.html">Change Department</a>
-            </td>
-            <td>
-                <a href="#">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                2
-            </td>
-            <td>
-                Beshoyhany
-            </td>
-            <td>
-                20210097
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                general
-            </td>
-            <td>
-                1
-            </td>
-            <td>
-                <input type="checkbox" disabled>
-            </td>
-            <td>
-                <a href="edit.html">Edit</a>
-            </td>
-            <td>
-                <a href="department.html">Change Department</a>
-            </td>
-            <td>
-                <a href="#">Delete</a>
-            </td>
-        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
     </table>
 </div>
 
 <script>
-    let e = document.querySelector("#show-filters");
-    e.addEventListener("click", () => {
-        toggle("#filters");
-        e.classList.toggle("active-btn");
-    });
+    initSearchStudent();
 </script>
 </body>
 </html>

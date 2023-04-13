@@ -29,6 +29,7 @@ body {
     z-index: 99;
     overflow: hidden;
     line-height: 10vh;
+    justify-content: center;
 }
 
 .navbar a:not(.navbar-logo) {
@@ -53,6 +54,7 @@ body {
 .navbar a {
     color: #DBE2EF;
     user-select: none;
+    margin: 0 3vw;
 }
 
 .navbar a:hover:not(.navbar-logo),
