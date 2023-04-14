@@ -1,132 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Active students</title>
-    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/style.css">
+    <link href="assets/logo.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="assets/style.css" rel="stylesheet" />
     <script src="assets/script.js"></script>
+  </head>
 
-</head>
-
-<body>
-<nav class="navbar">
-    <a href="home.html">Home</a>
-    <a href="add.html">Add Student</a>
-    <a href="active.html" class="cur-page">Active Students</a>
-    <a href="search.html">Search Students</a>
-</nav>
-<div class="container">
-    <form id="search-form">
+  <body>
+    <nav class="navbar">
+      <a href="home.html">Home</a>
+      <a href="add.html">Add Student</a>
+      <a class="cur-page" href="active.html">Active Students</a>
+      <a href="search.html">Search Students</a>
+    </nav>
+    <div class="container">
+      <form class="search-form" id="search-form" method="post">
         <div>
-            <input class="search-field" name="stud-name" placeholder="Student Name" type="text">
-            <input class="search-field" name="stud-id" placeholder="Student ID" type="number">
+          <span>
+            <input
+              type="hidden"
+              id="filter-status"
+              name="status"
+              value="active"
+            />
+            <input
+              class="search-field"
+              name="name"
+              placeholder="Student Name"
+              type="text"
+            />
+          </span>
+          <span>
+            <input
+              class="search-field"
+              name="id"
+              placeholder="Student ID"
+              type="number"
+            />
+          </span>
+          <span>
             <select name="sort-by">
-                <option>ID ascending</option>
-                <option>ID descending</option>
-                <option>GPA ascending</option>
-                <option>GPA descending</option>
+              <option value="name-asc">Name ascending</option>
+              <option value="name-desc">Name descending</option>
+              <option value="id-asc">ID ascending</option>
+              <option value="id-desc">ID descending</option>
+              <option value="gpa-asc">GPA ascending</option>
+              <option value="gpa-desc">GPA descending</option>
             </select>
-            <input type="submit" value="Search">
-            <input type="reset" value="Clear">
-            <input id="show-filters" type="button" value="Filters">
+          </span>
+          <span>
+            <input type="submit" value="Search" />
+          </span>
+          <span>
+            <input type="reset" value="Clear" />
+          </span>
+          <span>
+            <input id="show-filters" type="button" value="Filters" />
+          </span>
         </div>
-        <div class="hide" id="filters">
-            <span>
-                <b>Level</b>
-                <select name="stud-level">
-                <option>Any</option>
-                <option>Level 1</option>
-                <option>Level 2</option>
-                <option>Level 3</option>
-                <option>Level 4</option>
+        <div class="hide filters" id="filters">
+          <span>
+            <label for="filter-level">Level</label>
+            <select id="filter-level" name="level">
+              <option value="">Any</option>
+              <option value="1">Level 1</option>
+              <option value="2">Level 2</option>
+              <option value="3">Level 3</option>
+              <option value="4">Level 4</option>
             </select>
-            </span>
-            <span>
-                <b>GPA</b>
+          </span>
+          <span>
+            <b>GPA</b>
             <div class="gpa-selector">
-                <label for="l-gpa">From</label>
-                <input id="l-gpa" max="4.0" min="0" name="l-gpa" step="0.01" type="number" value="0.0">
-                <label for="r-gpa">To</label>
-                <input id="r-gpa" max="4.0" min="0" name="r-gpa" step="0.01" type="number" value="4.0">
+              <label for="l-gpa">From</label>
+              <input
+                id="l-gpa"
+                max="4.0"
+                min="0"
+                name="l-gpa"
+                step="0.01"
+                type="number"
+                value="0.0"
+              />
+              <label for="r-gpa">To</label>
+              <input
+                id="r-gpa"
+                max="4.0"
+                min="0"
+                name="r-gpa"
+                step="0.01"
+                type="number"
+                value="4.0"
+              />
             </div>
-            </span>
+          </span>
         </div>
-    </form>
-    <table>
-        <tr>
+      </form>
+      <table id="students-table" class="student-table">
+        <thead>
+          <tr>
             <th>#</th>
-            <th>
-                Name
-            </th>
-            <th>
-                ID
-            </th>
-            <th>
-                Level
-            </th>
-            <th>
-                Department
-            </th>
-            <th>
-                GPA
-            </th>
-            <th>
-                Active
-            </th>
-            <th>
-                Edit
-            </th>
-            <th>
-                Change Department
-            </th>
-            <th>
-                Delete
-            </th>
-        </tr>
-        <tr>
-            <td>
-                1
-            </td>
-            <td>
-                Bodagamal74
-            </td>
-            <td>
-                20210223
-            </td>
-            <td>
-                2
-            </td>
-            <td>
-                general
-            </td>
-            <td>
-                4
-            </td>
-            <td>
-                <input name="active" type="checkbox" checked disabled>
-            </td>
-            <td>
-                <a href="edit.html">Edit</a>
-            </td>
-            <td>
-                <a href="department.html">Change Department</a>
-            </td>
-            <td>
-                <a href="#">Delete</a>
-            </td>
-        </tr>
-    </table>
-</div>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Level</th>
+            <th>Department</th>
+            <th>GPA</th>
+            <th>Active</th>
+            <th>Edit</th>
+            <th>Change Department</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
-<script>
-    let e = document.querySelector("#show-filters");
-    e.addEventListener("click", () => {
-        toggle("#filters");
-        e.classList.toggle("active-btn");
-    });
-</script>
-
-</body>
+    <script>
+      initActiveStudent();
+    </script>
+  </body>
 </html>
