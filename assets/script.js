@@ -8,7 +8,6 @@ function toggleClass(selector) {
 }
 
 
-
 function validateEmail(email) {
     const exp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return exp.test(email);
@@ -24,7 +23,11 @@ function validateID(id) {
     return exp.test(id);
 }
 
-
+function validateBirthDate(dob) {
+    const cur = new Date();
+    const date = new Date(dob);
+    return date.getTime() <= cur.getTime();
+}
 
 function initAddStudent() {
     initDepartmentDropMenu();
@@ -186,7 +189,7 @@ function showSuccessMessage(message) {
     cont.querySelector("#message-modal-text").innerHTML = message;
 }
 
-function initDepartmentDropMenu(){
+function initDepartmentDropMenu() {
     const lvl_menu = document.querySelector("#level-dropdown");
     const dep_menu = document.querySelector("#department-dropdown");
     lvl_menu.addEventListener("change", () => {
@@ -214,10 +217,12 @@ function validateStudent(student) {
     if (!validatePhoneNumber(student['phone'])) {
         errors.push("Invalid phone number!")
     }
+    if(!validateBirthDate(student['dob']))
+        errors.push("Invalid birth date!")
     return errors;
 }
 
-function createObjectOnSubmit(submitEvent){
+function createObjectOnSubmit(submitEvent) {
     const formData = new FormData(submitEvent.target);
     const obj = {};
     for (const [key, value] of formData.entries()) {
