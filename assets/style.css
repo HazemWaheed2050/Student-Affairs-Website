@@ -202,7 +202,6 @@ form.student-form {
 
 form.student-form > div {
     display: flex;
-    align-items: center;
     margin-top: 10px;
     flex-grow: 1;
 }
@@ -238,6 +237,10 @@ form.student-form .buttons {
 
 form.student-form .buttons input {
     width: 40%;
+}
+
+.student-form {
+    font-size: 16pt;
 }
 
 /* Messages */
