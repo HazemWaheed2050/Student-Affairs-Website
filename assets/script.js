@@ -1,7 +1,13 @@
-function toggle(selector) {
+if (localStorage.getItem('students') === null) {
+    localStorage.setItem('students', '{}');
+}
+
+function toggleClass(selector) {
     let e = document.querySelector(selector);
     e.classList.toggle("hide");
 }
+
+
 
 function validateEmail(email) {
     const exp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -18,68 +24,34 @@ function validateID(id) {
     return exp.test(id);
 }
 
-if (localStorage.getItem('students') === null) {
-    localStorage.setItem('students', '{}');
-}
+
 
 function initAddStudent() {
-    const lvl_menu = document.querySelector("#level-dropdown");
-    const dep_menu = document.querySelector("#department-dropdown");
-    lvl_menu.addEventListener("change", (event) => {
-        dep_menu.disabled = lvl_menu.selectedIndex < 2;
-    });
+    initDepartmentDropMenu();
 
     const students = JSON.parse(localStorage.getItem('students'));
     const form = document.querySelector("#add-student-form");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-
-        const formData = new FormData(event.target);
-
-        const obj = {};
-
-        for (const [key, value] of formData.entries()) {
-            obj[key] = value;
-        }
-
+        const obj = createObjectOnSubmit(event);
         if (obj['level'] <= 2) {
             obj['department'] = 'general';
         }
 
-        const cont = document.querySelector("#message-modal-container");
-
-        // validation
-        if (!validateID(obj['id'])) {
-            console.log(obj['id']);
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Student ID.";
+        const errors = validateStudent(obj);
+        if (errors.length) {
+            let error_message = "";
+            for (let error of errors)
+                error_message += "\n" + error;
+            showErrorMessage(error_message);
         } else if (obj['id'] in students) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Student with same ID already exists.";
-        } else if (!validateEmail(obj['email'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Email Address.";
-        } else if (!validatePhoneNumber(obj['phone'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Phone number.";
+            showErrorMessage("Student with same ID already exists.");
         } else {
+            form.reset();
             students[obj['id']] = obj;
             localStorage.setItem('students', JSON.stringify(students));
-
-            cont.classList.remove("hide");
-            cont.classList.remove("error-msg");
-            cont.classList.add("success-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Student " + obj['name'] + " added successfully!";
+            showSuccessMessage("Student " + obj['name'] + " added")
         }
-        form.reset();
     });
 }
 
@@ -94,52 +66,21 @@ function initEditStudent() {
         form.elements[key].value = value;
     }
 
-    const lvl_menu = document.querySelector("#level-dropdown");
-    const dep_menu = document.querySelector("#department-dropdown");
-    lvl_menu.addEventListener("change", (event) => {
-        dep_menu.disabled = lvl_menu.selectedIndex < 2;
-    });
+    initDepartmentDropMenu();
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-
-        const formData = new FormData(event.target);
-
-        const obj = {};
-        for (const [key, value] of formData.entries()) {
-            obj[key] = value;
-        }
-
-        if (obj['level'] <= 2) {
-            obj['department'] = 'general';
-        }
-
-        const cont = document.querySelector("#message-modal-container");
-
-        // validation
-        if (!validateID(obj['id'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Student ID.";
-        } else if (!validateEmail(obj['email'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Email Address.";
-        } else if (!validatePhoneNumber(obj['phone'])) {
-            cont.classList.remove("hide");
-            cont.classList.remove("success-msg");
-            cont.classList.add("error-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Error:\n\t Invalid Phone number.";
+        const obj = createObjectOnSubmit(event);
+        const errors = validateStudent(obj);
+        if (errors) {
+            let error_message = "";
+            for (let error of errors)
+                error_message += "\n" + error;
+            showErrorMessage(error_message);
         } else {
             students[obj['id']] = obj;
             localStorage.setItem('students', JSON.stringify(students));
-
-            cont.classList.remove("hide");
-            cont.classList.remove("error-msg");
-            cont.classList.add("success-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Edits Saved";
+            showSuccessMessage("Edits to " + obj['name'] + "Saved")
         }
 
     });
@@ -149,7 +90,7 @@ function initSearchStudent() {
     const parametersToShow = ['name', 'id', 'level', 'department', 'gpa', 'status'];
     let e = document.querySelector("#show-filters");
     e.addEventListener("click", () => {
-        toggle("#filters");
+        toggleClass("#filters");
         e.classList.toggle("active-btn");
     });
 
@@ -157,11 +98,11 @@ function initSearchStudent() {
 
     let count = 1;
     const students = JSON.parse(localStorage.getItem('students'));
-    for (const [key, student] of Object.entries(students)) {
+    for (const [, student] of Object.entries(students)) {
 
         const row = document.createElement('tr');
         let cell = document.createElement('td');
-        cell.innerHTML = count++;
+        cell.innerHTML = `${count++}`;
 
         row.appendChild(cell);
         for (const key in parametersToShow) {
@@ -190,8 +131,8 @@ function initSearchStudent() {
         anchor.innerText = "Change Department";
         if (student['level'] <= 2) {
             anchor.style.pointerEvents = 'none';
-            anchor.style.cursor='default';
-            anchor.style.color='grey';
+            anchor.style.cursor = 'default';
+            anchor.style.color = 'grey';
         }
         cell.appendChild(anchor);
         row.appendChild(cell);
@@ -213,27 +154,74 @@ function initChangeDepartment() {
     const searchParams = new URLSearchParams(queryString);
 
     const students = JSON.parse(localStorage.getItem('students'));
-    const stud = students[searchParams.get('id')];
+    const student = students[searchParams.get('id')];
 
-    document.getElementById('stud-name').innerHTML = stud['name'];
-    document.getElementById('stud-id').innerHTML = stud['id'];
-    document.getElementById('stud-level').innerHTML = stud['level'];
-    if (stud['level'] <= 2)
+    document.getElementById('stud-name').innerHTML = student['name'];
+    document.getElementById('stud-id').innerHTML = student['id'];
+    document.getElementById('stud-level').innerHTML = student['level'];
+    if (student['level'] <= 2)
         document.getElementById('department-dropdown').disabled = true;
     else {
-        document.getElementById('department-dropdown').value = stud['department'];
-        const form = document.getElementById('change-department-form');
+        document.getElementById('department-dropdown').value = student['department'];
 
-        const cont = document.querySelector("#message-modal-container");
+        const form = document.getElementById('change-department-form');
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-            stud['department'] = document.getElementById('department-dropdown').value;
-            students[stud['id']] = stud;
+            student['department'] = document.getElementById('department-dropdown').value;
+
+            students[student['id']] = student;
             localStorage.setItem('students', JSON.stringify(students));
-            cont.classList.remove("hide");
-            cont.classList.remove("error-msg");
-            cont.classList.add("success-msg");
-            cont.querySelector("#message-modal-text").innerHTML = "Student " + obj['name'] + " added successfully!";
+
+            showSuccessMessage("Student " + student['name'] + "'s changed successfully!");
         });
     }
+}
+
+function showSuccessMessage(message) {
+    const cont = document.querySelector("#message-modal-container");
+
+    cont.classList.remove("hide");
+    cont.classList.remove("error-msg");
+    cont.classList.add("success-msg");
+    cont.querySelector("#message-modal-text").innerHTML = message;
+}
+
+function initDepartmentDropMenu(){
+    const lvl_menu = document.querySelector("#level-dropdown");
+    const dep_menu = document.querySelector("#department-dropdown");
+    lvl_menu.addEventListener("change", () => {
+        dep_menu.disabled = lvl_menu.selectedIndex < 2;
+    });
+}
+
+function showErrorMessage(message) {
+    const cont = document.querySelector("#message-modal-container");
+
+    cont.classList.remove("hide");
+    cont.classList.remove("success-msg");
+    cont.classList.add("error-msg");
+    cont.querySelector("#message-modal-text").innerText = message;
+}
+
+function validateStudent(student) {
+    let errors = [];
+    if (!validateID(student['id'])) {
+        errors.push("Invalid student ID!");
+    }
+    if (!validateEmail(student['email'])) {
+        errors.push("Invalid Email!")
+    }
+    if (!validatePhoneNumber(student['phone'])) {
+        errors.push("Invalid phone number!")
+    }
+    return errors;
+}
+
+function createObjectOnSubmit(submitEvent){
+    const formData = new FormData(submitEvent.target);
+    const obj = {};
+    for (const [key, value] of formData.entries()) {
+        obj[key] = value;
+    }
+    return obj;
 }
