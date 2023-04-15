@@ -94,6 +94,13 @@ a[disabled] {
   display: none !important;
 }
 
+.student-table a:visited {
+  color: blue;
+}
+
+.student-table a:visited:active {
+  color: red;
+}
 /* ==================== Containers ==================== */
 
 body .container {
@@ -264,14 +271,6 @@ input[type="button"]:active {
   margin: 20px;
 }
 
-.student-table a:visited {
-  color: blue;
-}
-
-.student-table a:visited:active {
-  color: red;
-}
-
 /* Button */
 
 .button {
@@ -297,25 +296,25 @@ input[type="button"]:active {
   vertical-align: middle;
 }
 
-input[type="reset"].button {
+.reset.button {
   background: #ff4742;
   border: 1px solid #ff4742;
 }
 
-input[type="reset"].button:hover,
-input[type="reset"].button:active {
+.reset.button:hover,
+.reset.button:active {
   background-color: initial;
   background-position: 0 0;
   color: #ff4742;
 }
 
-input[type="submit"].button {
+.submit.button {
   background: #3f72af;
   border: 1px solid #3f72af;
 }
 
-input[type="submit"].button:hover,
-input[type="submit"].button:active {
+.submit.button:hover,
+.submit.button:active {
   background-color: initial;
   background-position: 0 0;
   color: #3f72af;

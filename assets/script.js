@@ -231,7 +231,7 @@ function populateStudentsTable(students) {
 
   table.tBodies[0].innerHTML = "";
 
-  for (const [, student] of Object.entries(students)) {
+  for (const [key, student] of Object.entries(students)) {
     const row = document.createElement("tr");
     let cell = document.createElement("td");
     cell.innerHTML = `${count++}`;
@@ -277,6 +277,19 @@ function populateStudentsTable(students) {
     anchor = document.createElement("a");
     anchor.href = "#";
     anchor.innerText = "Delete";
+
+    anchor.addEventListener("click", () => {
+      const confirmation = confirm(
+        "Are you sure you want to delete student: " + student["name"] + "?"
+      );
+      if (confirmation) {
+        delete students[key];
+
+        localStorage.setItem('students', JSON.stringify(students));
+        table.tBodies[0].removeChild(row);
+      }
+    });
+
     cell.appendChild(anchor);
     row.appendChild(cell);
 
