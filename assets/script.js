@@ -11,7 +11,7 @@ const departments = {
   ds: "Decision Support",
 };
 
-const parametersToShow = ["name", "id", "level", "department", "gpa", "status"];
+const parametersToShow = ["name", "id", "level", "department", "gpa"];
 
 function toggleClass(selector) {
   let e = document.querySelector(selector);
@@ -244,19 +244,33 @@ function populateStudentsTable(students) {
       let value = student[param];
       if (param === "department") {
         value = departments[value];
-      } else if (param === "status") {
-        if (value === "active") {
-          value = '<input type="checkbox" checked disabled>';
-        } else {
-          value = '<input type="checkbox" disabled>';
-        }
       }
       cell.innerHTML = value;
       row.appendChild(cell);
     }
 
     cell = document.createElement("td");
+    const sel = document.createElement("select");
 
+    let op = document.createElement("option");
+    op.value = "active";
+    op.innerText = "Active";
+    sel.appendChild(op);
+
+    op = document.createElement("option");
+    op.value = "inactive";
+    op.innerText = "Inactive";
+    sel.appendChild(op);
+
+    sel.value = student['status'];
+    sel.addEventListener("change", () => {
+      students[key]['status'] = sel.value;
+      localStorage.setItem("students", JSON.stringify(students));
+    });
+    cell.appendChild(sel);
+    row.appendChild(cell);
+
+    cell = document.createElement("td");
     let anchor = document.createElement("a");
     anchor.href = "edit.html?id=" + student["id"];
     anchor.innerText = "Edit";
@@ -285,7 +299,7 @@ function populateStudentsTable(students) {
       if (confirmation) {
         delete students[key];
 
-        localStorage.setItem('students', JSON.stringify(students));
+        localStorage.setItem("students", JSON.stringify(students));
         table.tBodies[0].removeChild(row);
       }
     });
