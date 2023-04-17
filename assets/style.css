@@ -1,4 +1,16 @@
+/* Bull Shit */
+:root {
+  --main: #3c5276;
+  --main-dark: #112d4e;
+  --main-light: #657aa1;
+  --cancel: #ff4742;
+  --success: #006d91;
+}
 /* ==================== Globals ==================== */
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   padding: 0;
@@ -8,31 +20,46 @@ body {
   font-family: Arial, cursive;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 a {
   text-decoration: none;
+}
+
+a[disabled],
+a[disabled]:visited {
+  pointer-events: none;
+  cursor: default;
+  color: var(--main-light);
+}
+
+a:visited {
+  color: blue;
+}
+
+a:visited:active {
+  color: red;
+}
+
+img {
+  user-select: none;
 }
 
 /* ==================== Navbar styles ==================== */
 .navbar {
   padding: 0;
   margin: 0;
-  position: fixed;
-  height: 10vh;
   top: 0;
   display: flex;
-  background-color: #3f72af;
+  position: fixed;
+  background-color: var(--main);
   width: 100%;
   z-index: 99;
   overflow: hidden;
-  line-height: 10vh;
   justify-content: center;
+  height: 5vh;
+  line-height: 5vh;
 }
 
-.navbar a:not(.navbar-logo) {
+.navbar a {
   height: 100%;
   padding: 0 12pt;
   text-align: center;
@@ -41,26 +68,21 @@ a {
   white-space: nowrap;
 }
 
-.navbar .navbar-logo {
-  content: url("./logo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: 100%;
-}
-
 .navbar a:visited,
+.navbar a:visited:active,
+.navbar a:active,
 .navbar a {
-  color: #dbe2ef;
+  color: white;
   user-select: none;
-  margin: 0 3vw;
+  padding: 0 3vw;
 }
 
-.navbar a:hover:not(.navbar-logo),
+.navbar a:hover,
 .navbar a.cur-page {
-  background-color: #112d4e;
+  background-color: var(--main-dark);
 }
 
-/* ==================== Bull shit ==================== */
+/* ==================== Table ==================== */
 
 table {
   border: 1px solid black;
@@ -69,7 +91,7 @@ table {
 }
 
 th {
-  background-color: #112d4e;
+  background-color: var(--main-dark);
   color: white;
 }
 
@@ -82,24 +104,6 @@ td {
   text-align: center;
   padding: 10px 0;
   font-size: 14pt;
-}
-
-a[disabled] {
-  pointer-events: none;
-  cursor: default;
-  color: grey;
-}
-
-.hide {
-  display: none !important;
-}
-
-.student-table a:visited {
-  color: blue;
-}
-
-.student-table a:visited:active {
-  color: red;
 }
 /* ==================== Containers ==================== */
 
@@ -133,7 +137,7 @@ select {
   padding: 10px;
   margin: 5px 0;
 
-  border: 2px solid #3f72af;
+  border: 2px solid var(--main);
   border-radius: 5px;
 
   transition: 0.2s;
@@ -155,7 +159,7 @@ input:focus:not(
 input:active,
 select:focus,
 select:active {
-  box-shadow: 0 0 7px #112d4e;
+  box-shadow: 0 0 7px var(--main-dark);
 }
 
 input:focus:not(
@@ -165,7 +169,7 @@ input:focus:not(
     [type="button"]
   ),
 select:focus {
-  border-bottom: 2px solid #3f72af;
+  border-bottom: 2px solid var(--main);
 }
 
 input[type="submit"]:active,
@@ -256,7 +260,8 @@ input[type="button"]:active {
 /* Messages */
 
 .success-msg {
-  background: #3f72afbf;
+  background: var(--success);
+  opacity: 0.6;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -264,7 +269,8 @@ input[type="button"]:active {
 }
 
 .error-msg {
-  background: #ff4742bf;
+  background: var(--cancel);
+  opacity: 0.6;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -277,7 +283,7 @@ input[type="button"]:active {
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
@@ -297,25 +303,57 @@ input[type="button"]:active {
 }
 
 .reset.button {
-  background: #ff4742;
-  border: 1px solid #ff4742;
+  background: var(--cancel);
+  border: 1px solid var(--cancel);
 }
 
 .reset.button:hover,
 .reset.button:active {
   background-color: initial;
   background-position: 0 0;
-  color: #ff4742;
+  color: var(--cancel);
 }
 
 .submit.button {
-  background: #3f72af;
-  border: 1px solid #3f72af;
+  background: var(--success);
+  border: 1px solid var(--success);
 }
 
 .submit.button:hover,
 .submit.button:active {
   background-color: initial;
   background-position: 0 0;
-  color: #3f72af;
+  color: var(--success);
+}
+
+/* More Bull Shit */
+.hide {
+  display: none !important;
+}
+.center {
+  text-align: center !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+/* Projects page */
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.projects a {
+  font-size: 24pt;
+}
+
+.projects > span {
+  border-radius: 5px;
+  padding: 0 5em;
+  padding-top: -2em;
+  display: flex;
+  flex-direction: column;
 }

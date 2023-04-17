@@ -37,8 +37,8 @@
               type="text"
               id="id-field"
               name="id"
-              required
               readonly="true"
+              required
             />
           </div>
         </div>
@@ -50,6 +50,7 @@
               id="email-field"
               name="email"
               placeholder="example@ex.com"
+              pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}"
             />
           </div>
           <div>
@@ -59,6 +60,7 @@
               id="phone-field"
               name="phone"
               placeholder="xxxxxxxxxxx"
+              pattern="^(?:\+20|0)?1[0125]\d{8}$"
             />
           </div>
         </div>

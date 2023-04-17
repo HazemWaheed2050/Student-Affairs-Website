@@ -33,7 +33,13 @@
           </div>
           <div>
             <label for="id-field">ID</label>
-            <input type="text" id="id-field" name="id" required />
+            <input
+              type="text"
+              id="id-field"
+              name="id"
+              pattern="^[0-9]+$"
+              required
+            />
           </div>
         </div>
         <div class="double-field-container">
@@ -44,6 +50,8 @@
               id="email-field"
               name="email"
               placeholder="example@ex.com"
+              pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}"
+              required
             />
           </div>
           <div>
@@ -53,6 +61,8 @@
               id="phone-field"
               name="phone"
               placeholder="xxxxxxxxxxx"
+              pattern="^(?:\+20|0)?1[0125]\d{8}$"
+              required
             />
           </div>
         </div>
