@@ -1,3 +1,9 @@
+:root {
+  --main: #3f72af;
+  --main-dark: #112d4e;
+  --main-disabled: grey;
+  --cancel: #ff4742;
+}
 /* ==================== Globals ==================== */
 
 body {
@@ -24,7 +30,7 @@ a {
   height: 10vh;
   top: 0;
   display: flex;
-  background-color: #3f72af;
+  background-color: var(--main);
   width: 100%;
   z-index: 99;
   overflow: hidden;
@@ -50,14 +56,14 @@ a {
 
 .navbar a:visited,
 .navbar a {
-  color: #dbe2ef;
+  color: white;
   user-select: none;
   margin: 0 3vw;
 }
 
 .navbar a:hover:not(.navbar-logo),
 .navbar a.cur-page {
-  background-color: #112d4e;
+  background-color: var(--main-dark);
 }
 
 /* ==================== Bull shit ==================== */
@@ -69,7 +75,7 @@ table {
 }
 
 th {
-  background-color: #112d4e;
+  background-color: var(--main-dark);
   color: white;
 }
 
@@ -87,7 +93,7 @@ td {
 a[disabled] {
   pointer-events: none;
   cursor: default;
-  color: grey;
+  color: var(--main-disabled);
 }
 
 .hide {
@@ -133,7 +139,7 @@ select {
   padding: 10px;
   margin: 5px 0;
 
-  border: 2px solid #3f72af;
+  border: 2px solid var(--main);
   border-radius: 5px;
 
   transition: 0.2s;
@@ -155,7 +161,7 @@ input:focus:not(
 input:active,
 select:focus,
 select:active {
-  box-shadow: 0 0 7px #112d4e;
+  box-shadow: 0 0 7px var(--main-dark);
 }
 
 input:focus:not(
@@ -165,7 +171,7 @@ input:focus:not(
     [type="button"]
   ),
 select:focus {
-  border-bottom: 2px solid #3f72af;
+  border-bottom: 2px solid var(--main);
 }
 
 input[type="submit"]:active,
@@ -256,7 +262,8 @@ input[type="button"]:active {
 /* Messages */
 
 .success-msg {
-  background: #3f72afbf;
+  background: var(--main);
+  opacity: .75;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -264,7 +271,8 @@ input[type="button"]:active {
 }
 
 .error-msg {
-  background: #ff4742bf;
+  background: var(--cancel);
+  opacity: .75;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -277,7 +285,7 @@ input[type="button"]:active {
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
@@ -297,25 +305,25 @@ input[type="button"]:active {
 }
 
 .reset.button {
-  background: #ff4742;
-  border: 1px solid #ff4742;
+  background: var(--cancel);
+  border: 1px solid var(--cancel);
 }
 
 .reset.button:hover,
 .reset.button:active {
   background-color: initial;
   background-position: 0 0;
-  color: #ff4742;
+  color: var(--cancel);
 }
 
 .submit.button {
-  background: #3f72af;
-  border: 1px solid #3f72af;
+  background: var(--main);
+  border: 1px solid var(--main);
 }
 
 .submit.button:hover,
 .submit.button:active {
   background-color: initial;
   background-position: 0 0;
-  color: #3f72af;
+  color: var(--main);
 }
