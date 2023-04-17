@@ -342,18 +342,32 @@ input[type="button"]:active {
 
 .projects {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 45vw;
+  margin: 0 auto;
+  padding: 0 2vw;
 }
 
 .projects a {
   font-size: 24pt;
 }
 
-.projects > span {
+.projects span {
   border-radius: 5px;
-  padding: 0 5em;
-  padding-top: -2em;
+  padding: 2em 5em;
+
+  width: 90%;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.projects span * {
+  margin-right: 2em;
 }
