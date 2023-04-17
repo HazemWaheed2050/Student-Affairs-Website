@@ -1,8 +1,9 @@
 :root {
-  --main: #3f72af;
+  --main: #3c5276;
   --main-dark: #112d4e;
-  --main-disabled: grey;
+  --main-light: #657aa1;
   --cancel: #ff4742;
+  --success: #006d91;
 }
 /* ==================== Globals ==================== */
 
@@ -22,23 +23,38 @@ a {
   text-decoration: none;
 }
 
+a[disabled],
+a[disabled]:visited {
+  pointer-events: none;
+  cursor: default;
+  color: var(--main-light);
+}
+
+a:visited {
+  color: blue;
+}
+
+a:visited:active {
+  color: red;
+}
+
 /* ==================== Navbar styles ==================== */
 .navbar {
   padding: 0;
   margin: 0;
-  position: fixed;
-  height: 10vh;
   top: 0;
   display: flex;
+  position: fixed;
   background-color: var(--main);
   width: 100%;
   z-index: 99;
   overflow: hidden;
-  line-height: 10vh;
   justify-content: center;
+  height: 5vh;
+  line-height: 5vh;
 }
 
-.navbar a:not(.navbar-logo) {
+.navbar a {
   height: 100%;
   padding: 0 12pt;
   text-align: center;
@@ -47,26 +63,21 @@ a {
   white-space: nowrap;
 }
 
-.navbar .navbar-logo {
-  content: url("./logo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  max-width: 100%;
-}
-
 .navbar a:visited,
+.navbar a:visited:active,
+.navbar a:active,
 .navbar a {
   color: white;
   user-select: none;
-  margin: 0 3vw;
+  padding: 0 3vw;
 }
 
-.navbar a:hover:not(.navbar-logo),
+.navbar a:hover,
 .navbar a.cur-page {
   background-color: var(--main-dark);
 }
 
-/* ==================== Bull shit ==================== */
+/* ==================== Table ==================== */
 
 table {
   border: 1px solid black;
@@ -88,24 +99,6 @@ td {
   text-align: center;
   padding: 10px 0;
   font-size: 14pt;
-}
-
-a[disabled] {
-  pointer-events: none;
-  cursor: default;
-  color: var(--main-disabled);
-}
-
-.hide {
-  display: none !important;
-}
-
-.student-table a:visited {
-  color: blue;
-}
-
-.student-table a:visited:active {
-  color: red;
 }
 /* ==================== Containers ==================== */
 
@@ -263,7 +256,7 @@ input[type="button"]:active {
 
 .success-msg {
   background: var(--main);
-  opacity: .75;
+  opacity: 0.75;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -272,7 +265,7 @@ input[type="button"]:active {
 
 .error-msg {
   background: var(--cancel);
-  opacity: .75;
+  opacity: 0.75;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -317,13 +310,18 @@ input[type="button"]:active {
 }
 
 .submit.button {
-  background: var(--main);
-  border: 1px solid var(--main);
+  background: var(--success);
+  border: 1px solid var(--success);
 }
 
 .submit.button:hover,
 .submit.button:active {
   background-color: initial;
   background-position: 0 0;
-  color: var(--main);
+  color: var(--success);
+}
+
+/**/
+.hide {
+  display: none !important;
 }
