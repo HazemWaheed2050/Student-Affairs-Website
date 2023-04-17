@@ -1,3 +1,4 @@
+/* Bull Shit */
 :root {
   --main: #3c5276;
   --main-dark: #112d4e;
@@ -7,16 +8,16 @@
 }
 /* ==================== Globals ==================== */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
   margin: 0;
   width: 100%;
 
   font-family: Arial, cursive;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 a {
@@ -36,6 +37,10 @@ a:visited {
 
 a:visited:active {
   color: red;
+}
+
+img {
+  user-select: none;
 }
 
 /* ==================== Navbar styles ==================== */
@@ -255,8 +260,8 @@ input[type="button"]:active {
 /* Messages */
 
 .success-msg {
-  background: var(--main);
-  opacity: 0.75;
+  background: var(--success);
+  opacity: 0.6;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -265,7 +270,7 @@ input[type="button"]:active {
 
 .error-msg {
   background: var(--cancel);
-  opacity: 0.75;
+  opacity: 0.6;
   color: white;
   padding: 24pt;
   border-radius: 10px;
@@ -321,7 +326,34 @@ input[type="button"]:active {
   color: var(--success);
 }
 
-/**/
+/* More Bull Shit */
 .hide {
   display: none !important;
+}
+.center {
+  text-align: center !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+/* Projects page */
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.projects a {
+  font-size: 24pt;
+}
+
+.projects > span {
+  border-radius: 5px;
+  padding: 0 5em;
+  padding-top: -2em;
+  display: flex;
+  flex-direction: column;
 }
