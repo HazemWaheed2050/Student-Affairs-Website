@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Edit Student</title>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="hide" id="notification-container">
+        <span id="notification-text"> </span>
+    </div>
+    <form method="post" name="change-department" id="change-department-form" class="student-form">
+        <h2>Change department</h2>
+        <p>Name: <span id="stud-name"> </span></p>
+        <p>ID: <span id="stud-id"> </span></p>
+        <p>Level: <span id="stud-level"> </span></p>
+
+        <div class="field-container">
+            <div>
+                <label for="department-dropdown"><p>Department</p></label>
+                <select name="department" id="department-dropdown">
+                    <option value="it">IT</option>
+                    <option value="ai">AI</option>
+                    <option value="cs">CS</option>
+                    <option value="is">IS</option>
+                    <option value="ds">DS</option>
+                </select>
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="submit" value="Save" class="button submit"/>
+        </div>
+    </form>
+</div>
+{% endblock %}

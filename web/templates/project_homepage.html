@@ -1,0 +1,61 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Project Selection</title>
+    <link href="{% static 'img/logo.png' %}" rel="shortcut icon" type="image/x-icon" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+      <div class="projects">
+        <span>
+          <img
+            src="{% static 'img/hr.png' %}"
+            class="center"
+            alt="university logo"
+            width="125px"
+          />
+          <div>
+            <a href="">HR</a>
+            <section>Human Recources Managment Site</section>
+          </div>
+        </span>
+        <span>
+          <img
+            src="{% static 'img/student_affairs_logo.png' %}"
+            class="center"
+            alt="university logo"
+            width="125px"
+          />
+          <div>
+            <a href="{% url 'home' %}">Student Affairs</a>
+            <section>Student Affairs Management Site</section>
+          </div>
+        </span>
+        <span>
+          <img
+            src="{% static 'img/high_studies.png' %}"
+            class="center"
+            alt="university logo"
+            width="125px"
+          />
+          <div>
+            <a href="">Higher Studies</a>
+            <section>Higher Studies Managment Site</section>
+          </div>
+        </span>
+        <span>
+          <img
+            src="{% static 'img/lab.png' %}"
+            class="center"
+            alt="university logo"
+            width="125px"
+          />
+          <div>
+            <a href="">Lab tracker</a>
+            <section>Labs Tracking Site</section>
+          </div>
+        </span>
+      </div>
+  </body>
+</html>

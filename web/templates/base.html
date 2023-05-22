@@ -1,0 +1,22 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    {% block title %}{% endblock %}
+    <link href="{% static 'img/logo.png' %}" rel="shortcut icon" type="image/x-icon"/>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <script src="{% static 'js/script.js' %}"></script>
+    <title></title>
+</head>
+
+<body>
+<nav class="navbar">
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'add' %}">Add Student</a>
+    <a href="{% url 'active' %}">Active Students</a>
+    <a href="{% url 'search' %}">Search</a>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

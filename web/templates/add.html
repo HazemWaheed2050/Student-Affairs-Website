@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Add Student</title>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="hide" id="notification-container">
+            <span id="notification-text"> </span>
+        </div>
+
+        <form
+                method="post"
+                name="add-student"
+                id="add-student-form"
+                class="student-form"
+                action="addrecord/"
+        >
+            {% csrf_token %}
+            <h3>Add a new student</h3>
+            <div class="double-field-container">
+                <div>
+                    <label for="name-field">Name</label>
+                    <input id="name-field" type="text" name="name" required/>
+                </div>
+                <div>
+                    <label for="id-field">ID</label>
+                    <input
+                            type="text"
+                            id="id-field"
+                            name="id"
+                            pattern="^[0-9]+$"
+                            required
+                    />
+                </div>
+            </div>
+            <div class="double-field-container">
+                <div>
+                    <label for="email-field">Email</label>
+                    <input
+                            type="text"
+                            id="email-field"
+                            name="email"
+                            placeholder="example@ex.com"
+                            pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}"
+                            required
+                    />
+                </div>
+                <div>
+                    <label for="phone-field">Phone number</label>
+                    <input
+                            type="text"
+                            id="phone-field"
+                            name="phone"
+                            placeholder="xxxxxxxxxxx"
+                            pattern="^(?:\+20|0)?1[0125]\d{8}$"
+                            required
+                    />
+                </div>
+            </div>
+            <div class="field-container">
+                <div>
+                    <label for="dob-field">Birth date</label>
+                    <input type="date" id="dob-field" name="dob" required/>
+                </div>
+            </div>
+            <div class="double-field-container">
+                <div>
+                    <label for="student-gender-dropdown">Gender</label>
+                    <select name="gender" id="student-gender-dropdown">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="student-status-dropdown">Status</label>
+                    <select name="status" id="student-status-dropdown">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field-container">
+                <div>
+                    <label for="gpa-field">GPA</label>
+                    <input
+                            type="number"
+                            id="gpa-field"
+                            min="0"
+                            max="4.0"
+                            step="0.01"
+                            value="0.0"
+                            name="gpa"
+                            required
+                    />
+                </div>
+            </div>
+
+            <div class="double-field-container">
+                <div>
+                    <label for="level-dropdown">Level</label>
+                    <select name="level" id="level-dropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="department-dropdown">Department</label>
+                    <select name="department" id="department-dropdown" disabled>
+                        <option value="it">IT</option>
+                        <option value="ai">AI</option>
+                        <option value="cs">CS</option>
+                        <option value="is">IS</option>
+                        <option value="ds">DS</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <input type="submit" value="Add" class="button submit"/>
+                <input type="reset" value="Clear" class="button reset"/>
+            </div>
+        </form>
+    </div>
+    <script>
+        const lvl_menu = document.querySelector("#level-dropdown");
+        const dep_menu = document.querySelector("#department-dropdown");
+        lvl_menu.addEventListener("change", () => {
+            dep_menu.disabled = lvl_menu.selectedIndex < 2;
+        });
+    </script>
+{% endblock %}
+

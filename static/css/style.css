@@ -1,0 +1,371 @@
+:root {
+  --main: #3c5276;
+  --main-dark: #112d4e;
+  --main-light: #657aa1;
+  --cancel: #ff4742;
+  --success: #006d91;
+}
+/* ==================== Globals ==================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  font-family: Arial, cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+a[disabled],
+a[disabled]:visited {
+  pointer-events: none;
+  cursor: default;
+  color: var(--main-light);
+}
+
+a:visited {
+  color: blue;
+}
+
+a:visited:active {
+  color: red;
+}
+
+img {
+  user-select: none;
+}
+
+/* ==================== Navbar styles ==================== */
+.navbar {
+  padding: 0;
+  margin: 0;
+  top: 0;
+  display: flex;
+  position: fixed;
+  background-color: var(--main);
+  width: 100%;
+  z-index: 99;
+  overflow: hidden;
+  justify-content: center;
+  height: 5vh;
+  line-height: 5vh;
+}
+
+.navbar a {
+  height: 100%;
+  padding: 0 12pt;
+  text-align: center;
+  font-size: 16pt;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.navbar a:visited,
+.navbar a:visited:active,
+.navbar a:active,
+.navbar a {
+  color: white;
+  user-select: none;
+  padding: 0 3vw;
+}
+
+.navbar a:hover,
+.navbar a.cur-page {
+  background-color: var(--main-dark);
+}
+
+/* ==================== Table ==================== */
+
+table {
+  border: 1px solid black;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: var(--main-dark);
+  color: white;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14pt;
+}
+/* ==================== Containers ==================== */
+
+body .container {
+  margin: 0 auto;
+  width: 70vw;
+  padding: 0 2.5vw;
+}
+
+body > *:not(nav.navbar) {
+  margin-top: calc(20px + 10vh);
+}
+
+body > *:not(nav.navbar) ~ * {
+  margin-top: 0;
+}
+
+/* ==================== Forms ==================== */
+
+input,
+input:focus,
+input:active,
+select,
+select:focus,
+select:active {
+  outline-width: 0;
+}
+
+input,
+select {
+  padding: 10px;
+  margin: 5px 0;
+
+  border: 2px solid var(--main);
+  border-radius: 5px;
+
+  transition: 0.2s;
+
+  font-size: 12pt;
+}
+
+form > div {
+  display: flex;
+  margin-top: 10px;
+}
+
+input:focus:not(
+    [type="radio"],
+    [type="submit"],
+    [type="reset"],
+    [type="button"]
+  ),
+input:active,
+select:focus,
+select:active {
+  box-shadow: 0 0 7px var(--main-dark);
+}
+
+input:focus:not(
+    [type="radio"],
+    [type="submit"],
+    [type="reset"],
+    [type="button"]
+  ),
+select:focus {
+  border-bottom: 2px solid var(--main);
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+  transition: 0.1s;
+}
+
+.student-form {
+  flex-direction: column;
+  padding: 0 15vw 15vh 15vw;
+  font-size: 16pt;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid black;
+}
+
+.search-form > div * {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.search-form div *:last-child {
+  margin-right: 0;
+}
+
+.search-form span input,
+.search-form span select {
+  width: 100%;
+}
+
+.gpa-selector {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.gpa-selector input {
+  flex-grow: 1;
+}
+
+.filters .gpa-selector *:not(:empty) {
+  margin: 0 5pt 0 0;
+}
+
+.filters .gpa-selector *:not(:empty, :first-child) {
+  margin: 0 5pt 0 5pt;
+}
+
+.active-btn {
+  border-color: #0e2ea9;
+}
+
+.double-field-container {
+  justify-content: space-between;
+}
+
+.field-container div {
+  width: 100%;
+  display: inline-block;
+}
+
+.double-field-container div {
+  width: 49%;
+  display: inline-block;
+}
+
+.field-container div select,
+.field-container div input,
+.double-field-container div select,
+.double-field-container div input {
+  width: 100%;
+}
+
+.student-form .buttons {
+  justify-content: space-around;
+}
+
+.student-form .buttons input {
+  width: 40%;
+}
+
+/* Messages */
+
+.success-msg {
+  background: var(--success);
+  opacity: 0.6;
+  color: white;
+  padding: 24pt;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.error-msg {
+  background: var(--cancel);
+  opacity: 0.6;
+  color: white;
+  padding: 24pt;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+/* Button */
+
+.button {
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.reset.button {
+  background: var(--cancel);
+  border: 1px solid var(--cancel);
+}
+
+.reset.button:hover,
+.reset.button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--cancel);
+}
+
+.submit.button {
+  background: var(--success);
+  border: 1px solid var(--success);
+}
+
+.submit.button:hover,
+.submit.button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--success);
+}
+
+.hide {
+  display: none !important;
+}
+.center {
+  text-align: center !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+/* Projects page */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 45vw;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+.projects a {
+  font-size: 24pt;
+}
+
+.projects span {
+  border-radius: 5px;
+  padding: 2em 5em;
+
+  width: 90%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.projects span * {
+  margin-right: 2em;
+}

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Search Students</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="search-form" id="search-form" method="post">
+        <div>
+          <span>
+            <input
+                    class="search-field"
+                    name="name"
+                    placeholder="Student Name"
+                    type="text"
+            />
+          </span>
+            <span>
+            <input
+                    class="search-field"
+                    name="id"
+                    placeholder="Student ID"
+                    type="number"
+            />
+          </span>
+            <span>
+            <select name="sort-by">
+              <option value="name-asc">Name ascending</option>
+              <option value="name-desc">Name descending</option>
+              <option value="id-asc">ID ascending</option>
+              <option value="id-desc">ID descending</option>
+              <option value="gpa-asc">GPA ascending</option>
+              <option value="gpa-desc">GPA descending</option>
+            </select>
+          </span>
+            <span>
+            <input type="submit" value="Search"/>
+          </span>
+            <span>
+            <input type="reset" value="Clear"/>
+          </span>
+            <span>
+            <input id="show-filters" type="button" value="Filters"/>
+          </span>
+        </div>
+        <div class="hide filters" id="filters">
+          <span>
+            <label for="filter-level">Level</label>
+            <select id="filter-level" name="level">
+              <option value="">Any</option>
+              <option value="1">Level 1</option>
+              <option value="2">Level 2</option>
+              <option value="3">Level 3</option>
+              <option value="4">Level 4</option>
+            </select>
+          </span>
+            <span>
+            <label for="filter-status">Status</label>
+            <select id="filter-status" name="status">
+              <option value="">Any</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </span>
+            <span>
+            <b>GPA</b>
+            <div class="gpa-selector">
+              <label for="l-gpa">From</label>
+              <input
+                      id="l-gpa"
+                      max="4.0"
+                      min="0"
+                      name="l-gpa"
+                      step="0.01"
+                      type="number"
+                      value="0.0"
+              />
+              <label for="r-gpa">To</label>
+              <input
+                      id="r-gpa"
+                      max="4.0"
+                      min="0"
+                      name="r-gpa"
+                      step="0.01"
+                      type="number"
+                      value="4.0"
+              />
+            </div>
+          </span>
+        </div>
+    </form>
+    <table id="students-table" class="student-table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Level</th>
+            <th>Department</th>
+            <th>GPA</th>
+            <th>Active</th>
+            <th>Edit</th>
+            <th>Change Department</th>
+            <th>Delete</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.id }}</td>
+                <td>{{ student.level }}</td>
+                <td>{{ student.department }}</td>
+                <td>{{ student.gpa }}</td>
+                <td>{{ student.active }}</td>
+                <td></td>
+                <td></td>
+                <td><a href="delete/{{ student.id }}" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+{% endblock %}
+
