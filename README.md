@@ -1,1 +1,1 @@
-# IS231-Project
+# Student affairs
